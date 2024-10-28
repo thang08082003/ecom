@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Your Cart</h1>
+        <ul class="list-group mt-3">
+            <th:block th:each="item : ${cart.items}">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span th:text="${item.name}"></span>
+                    <span th:text="${item.price} + ' VND'"></span>
+                    <form th:action="@{/cart/remove}" method="post" style="display: inline;">
+                        <input type="hidden" name="itemId" th:value="${item.idItem}" />
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </li>
+            </th:block>
+        </ul>
+        
+        <h4 class="mt-4">Total: <span th:text="${cartTotal} + ' VND'"></span></h4>
+
+        <div class="mt-4 d-flex justify-content-between">
+            <a href="/search" class="btn btn-primary">Continue Shopping</a>
+            <a href="/payment" class="btn btn-success">Next</a>
+        </div>
+    </div>
+</body>
+</html>

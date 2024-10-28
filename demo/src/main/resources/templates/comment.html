@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment and Rating</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Leave a Comment and Rating</h1>
+        <form action="/comment/submit" method="post">
+            <input type="hidden" name="shipmentId" value="${shipmentId}"> <!-- Gửi idShipment -->
+            <input type="hidden" name="idItem" value="${idItem}" /> <!-- Cập nhật từ itemId thành idItem -->
+            
+            <div class="form-group">
+                <label for="content">Comment</label>
+                <textarea name="content" id="content" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ratingValue">Rating</label>
+                <select name="ratingValue" id="ratingValue" class="form-control" required>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+           
+            <button type="submit" class="btn btn-success">Submit Comment and Rating</button>
+        </form>
+    </div>
+</body>
+</html>
